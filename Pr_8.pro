@@ -11,7 +11,8 @@ CONFIG += c++11
 SOURCES += \
     complex.cpp \
     main.cpp \
-    canvas.cpp
+    canvas.cpp \
+    sample.cpp
 
 HEADERS += \
     array.h \
@@ -20,7 +21,8 @@ HEADERS += \
     fsi.h \
     fsin.h \
     function.h \
-    polinom.h
+    polinom.h \
+    sample.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

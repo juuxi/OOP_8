@@ -2,8 +2,6 @@
 #define TCANVAS_H
 
 #include <QWidget>
-#include <QPainter>
-//#include "interface.h"
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
@@ -11,18 +9,20 @@
 #include "complex.h"
 #include "fsin.h"
 #include "fsi.h"
+#include "sample.h"
 
 class TCanvas : public QWidget
 {
     Q_OBJECT
-    QLabel* power;
-    QLineEdit* power_input;
-    QLabel* a_name;
-    QLineEdit* a_re;
+    QLabel* low_arg_name;
+    QLineEdit* low_arg_input;
+    QLabel* high_arg_name;
+    QLineEdit* high_arg_input;
     QLabel* func;
     QRadioButton* sin_rb, *integral_sin_rb;
     QPushButton* submit;
-    QLabel* output;
+
+    TSample s;
 
 public:
     TCanvas(QWidget *parent = nullptr);
