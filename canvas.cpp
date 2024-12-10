@@ -14,14 +14,8 @@ TCanvas::TCanvas(QWidget *parent)
     a_name = new QLabel("a = ", this);
     a_name->setGeometry(10, 90, 20, 30);
 
-    a_delimiter = new QLabel(" +i ", this);
-    a_delimiter->setGeometry(60, 90, 20, 30);
-
     a_re = new QLineEdit(this);
     a_re->setGeometry(30, 95, 30, 20);
-
-    a_im = new QLineEdit(this);
-    a_im->setGeometry(80, 95, 30, 20);
 
     func = new QLabel("Вычислить функцию", this);
     func->setGeometry(10, 60, 200, 30);
@@ -64,23 +58,23 @@ void TCanvas::print_val()
     if (sin_rb->isChecked())
     {
         int n = power_input->text().toInt();
-        TFsin<TComplex> sin_func(n);
+        TFsin<double> sin_func(n);
         QString s;
-        s += "p";
-        s << TComplex(a_re->text().toDouble(), a_im->text().toDouble());
-        s += " = ";
-        s << sin_func(TComplex(a_re->text().toDouble(), a_im->text().toDouble()));
+        s += "p(";
+        s += QString::number(a_re->text().toDouble());
+        s += ") = ";
+        s += QString::number(sin_func(a_re->text().toDouble()));
         output->setText(s);
     }
     else if (integral_sin_rb->isChecked())
     {
         int n = power_input->text().toInt();
-        TFSi<TComplex> Si_func(n);
+        TFSi<double> Si_func(n);
         QString s;
-        s += "p";
-        s << TComplex(a_re->text().toDouble(), a_im->text().toDouble());
-        s += " = ";
-        s << Si_func(TComplex(a_re->text().toDouble(), a_im->text().toDouble()));
+        s += "p(";
+        s += QString::number(a_re->text().toDouble());
+        s += ") = ";
+        s += QString::number(Si_func(a_re->text().toDouble()));
         output->setText(s);
     }
 }
@@ -91,8 +85,6 @@ TCanvas::~TCanvas()
     delete power_input;
     delete a_name;
     delete a_re;
-    delete a_delimiter;
-    delete a_im;
     delete func;
     delete sin_rb;
     delete integral_sin_rb;

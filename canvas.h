@@ -17,8 +17,8 @@ class TCanvas : public QWidget
     Q_OBJECT
     QLabel* power;
     QLineEdit* power_input;
-    QLabel* a_name, *a_delimiter;
-    QLineEdit* a_re, *a_im;
+    QLabel* a_name;
+    QLineEdit* a_re;
     QLabel* func;
     QRadioButton* sin_rb, *integral_sin_rb;
     QPushButton* submit;
