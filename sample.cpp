@@ -19,10 +19,16 @@ void TSample::draw(QPainter* p, QRect r, QColor c)
 //        t[i] = QPointF(100 + cw+cr*sin(i*a),ch-cr*cos(i*a));
 //    }
     p->setPen(QPen(Qt::black));
+    p->setRenderHint(QPainter::Antialiasing, true);
 //    p->drawPolygon(t,count);
 //    delete [] t;
-    for(int xCoord = 100; xCoord < 200; xCoord++)
+    QPainterPath Path(QPointF(10, 200));
+    double yCoord[150];
+    for(int xCoord = 2; xCoord < 152; xCoord++)
     {
-        p->drawPoint(xCoord, 300 + sin(xCoord - 100));
+        //p->drawPoint(xCoord, 300 + sin(xCoord - 100));
+        yCoord[xCoord - 2] = 5 * sin(xCoord);
+        Path.lineTo(QPointF(5 * xCoord, 200 + yCoord[xCoord - 2]));
     }
+    p->drawPath(Path);
 }
