@@ -6,9 +6,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QRadioButton>
-#include "complex.h"
-#include "fsin.h"
-#include "fsi.h"
 #include "sample.h"
 
 class TCanvas : public QWidget
