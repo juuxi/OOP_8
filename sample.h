@@ -9,6 +9,7 @@ class TSample
 public:
     TSample(int);
     void draw_sin(QPainter*,QRect,QColor);
+    void draw_integral_sin(QPainter*,QRect,QColor);
 };
 
 #endif // TSAMPLE_H
