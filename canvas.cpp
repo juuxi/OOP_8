@@ -37,7 +37,7 @@ void TCanvas::paintEvent(QPaintEvent*)
     QPainter p;
     p.begin(this);
     if (sin_rb->isChecked())
-        s.draw(&p,rect(),Qt::green);
+        s.draw_sin(&p,rect(),Qt::green);
     if (integral_sin_rb->isChecked())
         ;
     p.end();

@@ -7,28 +7,19 @@ TSample::TSample(int n)
     count=n;
 }
 
-void TSample::draw(QPainter* p, QRect r, QColor c)
+void TSample::draw_sin(QPainter* p, QRect r, QColor c)
 {
-//    qreal cw = 0.5*r.width();
-//    qreal ch = 0.5*r.height();
-//    qreal cr = 0.9*(cw>ch?ch:cw);
-//    qreal a = 2.0*acos(-1.0)/count;
-//    QPointF *t = new QPointF[count];
-//    for (int i=0; i<count; i++)
-//    {
-//        t[i] = QPointF(100 + cw+cr*sin(i*a),ch-cr*cos(i*a));
-//    }
-    p->setPen(QPen(Qt::black));
+    p->setPen(QPen(Qt::darkRed));
     p->setRenderHint(QPainter::Antialiasing, true);
-//    p->drawPolygon(t,count);
-//    delete [] t;
+    p->drawLine(10, 150, 10, 250);
+    p->drawLine(10, 200, 800, 200);
+    p->setPen(QPen(Qt::black));
     QPainterPath Path(QPointF(10, 200));
     double yCoord[150];
-    for(int xCoord = 2; xCoord < 152; xCoord++)
+    for(int xCoord = 0; xCoord < 75; xCoord++)
     {
-        //p->drawPoint(xCoord, 300 + sin(xCoord - 100));
-        yCoord[xCoord - 2] = 5 * sin(xCoord);
-        Path.lineTo(QPointF(5 * xCoord, 200 + yCoord[xCoord - 2]));
+        yCoord[xCoord] = 10 * sin(xCoord);
+        Path.lineTo(QPointF(10 * xCoord + 10, 200 - yCoord[xCoord]));
     }
     p->drawPath(Path);
 }

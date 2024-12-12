@@ -8,7 +8,7 @@ class TSample
     int count;
 public:
     TSample(int);
-    void draw(QPainter*,QRect,QColor);
+    void draw_sin(QPainter*,QRect,QColor);
 };
 
 #endif // TSAMPLE_H
