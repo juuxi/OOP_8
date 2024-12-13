@@ -35,11 +35,31 @@ TCanvas::TCanvas(QWidget *parent)
 void TCanvas::paintEvent(QPaintEvent*)
 {
     QPainter p;
+    const double double_NULL = -1000.1;
     p.begin(this);
     if (sin_rb->isChecked())
-        s.draw_sin(&p, 0, 0);
-    if (integral_sin_rb->isChecked())
-        s.draw_integral_sin(&p, 0, 0);
+    {
+        if (low_arg_input->text() == "" && high_arg_input->text() == "")
+            s.draw_sin(&p, double_NULL, double_NULL);
+        else if (low_arg_input->text() == "")
+            s.draw_sin(&p, double_NULL, high_arg_input->text().toDouble());
+        else if (high_arg_input->text() == "")
+            s.draw_sin(&p, low_arg_input->text().toDouble(), double_NULL);
+        else
+            s.draw_sin(&p, low_arg_input->text().toDouble(), high_arg_input->text().toDouble());
+    }
+
+    if (integral_sin_rb->isChecked()) 
+    {
+        if (low_arg_input->text() == "" && high_arg_input->text() == "")
+            s.draw_integral_sin(&p, double_NULL, double_NULL);
+        else if (low_arg_input->text() == "")
+            s.draw_integral_sin(&p, double_NULL, high_arg_input->text().toDouble());
+        else if (high_arg_input->text() == "")
+            s.draw_integral_sin(&p, low_arg_input->text().toDouble(), double_NULL);
+        else
+            s.draw_integral_sin(&p, low_arg_input->text().toDouble(), high_arg_input->text().toDouble());
+    }
     p.end();
 }
 
