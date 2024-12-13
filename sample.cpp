@@ -9,35 +9,49 @@ TSample::TSample(int n)
 
 void TSample::draw_sin(QPainter* p, QRect r, QColor c)
 {
+    const int START_X = 10;
+    const int MID_X = 260;
+    const int MID_Y = 200;
+    const int END_X = 530;
+    const int MULTIPLIER = 10;
+    const int WIDTH = 25;
     p->setPen(QPen(Qt::darkRed));
     p->setRenderHint(QPainter::Antialiasing, true);
-    p->drawLine(260, 150, 260, 250);
-    p->drawLine(10, 200, 530, 200);
+    p->drawLine(MID_X, MID_Y - 2 * WIDTH, MID_X, MID_Y + 2 * WIDTH);
+    p->drawLine(START_X, MID_Y, END_X, MID_Y);
     p->setPen(QPen(Qt::black));
-    QPainterPath Path(QPointF(10, 200));
-    double yCoord[150];
-    for(int xCoord = 0; xCoord < 50; xCoord++)
+    QPainterPath Path(QPointF(START_X, MID_Y));
+    double yCoord[100];
+    for(int xCoord = 0; xCoord < 2 * WIDTH; xCoord++)
     {
-        yCoord[xCoord] = 10 * sin(xCoord - 25);
-        Path.lineTo(QPointF(10 * xCoord + 10, 200 - yCoord[xCoord]));
+        yCoord[xCoord] = MULTIPLIER * sin(xCoord - WIDTH);
+        Path.lineTo(QPointF(MULTIPLIER * xCoord + START_X, MID_Y - yCoord[xCoord]));
     }
     p->drawPath(Path);
 }
 
 void TSample::draw_integral_sin(QPainter* p, QRect r, QColor c)
 {
+    const int START_X = 10;
+    const int START_DRAW_X = 150;
+    const int MID_X = 300;
+    const int MID_Y = 200;
+    const int END_X = 600;
+    const int MULTIPLIER_Y = 60;
+    const int MULTIPLIER_X = 15;
+    const int WIDTH = 10;
     p->setPen(QPen(Qt::darkRed));
     p->setRenderHint(QPainter::Antialiasing, true);
-    p->drawLine(300, 150, 300, 250);
-    p->drawLine(10, 200, 600, 200);
+    p->drawLine(MID_X, MID_Y - 7 * WIDTH, MID_X, MID_Y + 7 * WIDTH);
+    p->drawLine(START_X, MID_Y, END_X, MID_Y);
     p->setPen(QPen(Qt::black));
-    QPainterPath Path(QPointF(150, 200));
+    QPainterPath Path(QPointF(START_DRAW_X, MID_Y));
     double yCoord[400];
     int i = 0;
-    for(double xCoord = 0; xCoord < 20; xCoord += 0.1, i++)
+    for(double xCoord = 0; xCoord < 2 * WIDTH; xCoord += 0.1, i++)
     {
-        yCoord[i] = 60 * sin(xCoord - 10)/(xCoord - 10);
-        Path.lineTo(QPointF(15 * xCoord + 150, 200 - yCoord[i]));
+        yCoord[i] = MULTIPLIER_Y * sin(xCoord - WIDTH)/(xCoord - WIDTH);
+        Path.lineTo(QPointF(MULTIPLIER_X * xCoord + START_DRAW_X, MID_Y - yCoord[i]));
     }
     p->drawPath(Path);
 }
