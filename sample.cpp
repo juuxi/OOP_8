@@ -30,6 +30,17 @@ void TSample::draw_sin(QPainter* p, double start = 0, double end = 0)
     p->drawLine(MID_X, MID_Y - 2 * WIDTH, MID_X, MID_Y + 2 * WIDTH);
     p->drawLine(START_X, MID_Y, END_X, MID_Y);
     p->setPen(QPen(Qt::black));
+
+    p->drawLine(MID_X-3, MID_Y - MULTIPLIER, MID_X+3, MID_Y - MULTIPLIER);
+    p->drawLine(MID_X-3, MID_Y + MULTIPLIER, MID_X+3, MID_Y + MULTIPLIER);
+    p->drawText(QPointF(MID_X + 1, MID_Y - MULTIPLIER), "1");
+    p->drawText(QPointF(MID_X + 1, MID_Y + MULTIPLIER), "-1");
+
+    p->drawLine(MID_X - 5 * MULTIPLIER, MID_Y - 3, MID_X - 5 * MULTIPLIER, MID_Y + 3);
+    p->drawLine(MID_X + 5 * MULTIPLIER, MID_Y - 3, MID_X + 5 * MULTIPLIER, MID_Y + 3);
+    p->drawText(QPointF(MID_X + 5 * MULTIPLIER, MID_Y + 1), "5");
+    p->drawText(QPointF(MID_X - 5 * MULTIPLIER, MID_Y + 1), "-5");
+
     QPainterPath Path(QPointF(MULTIPLIER * (start + 1), MID_Y));
     double yCoord[100];
     int i = 0;
@@ -65,6 +76,17 @@ void TSample::draw_integral_sin(QPainter* p, double start, double end)
     p->drawLine(MID_X, MID_Y - 4 * WIDTH, MID_X, MID_Y + 4 * WIDTH);
     p->drawLine(START_X, MID_Y, END_X, MID_Y);
     p->setPen(QPen(Qt::black));
+
+    p->drawLine(MID_X-3, MID_Y - MULTIPLIER_Y, MID_X+3, MID_Y - MULTIPLIER_Y);
+    p->drawLine(MID_X-3, MID_Y + MULTIPLIER_Y, MID_X+3, MID_Y + MULTIPLIER_Y);
+    p->drawText(QPointF(MID_X + 1, MID_Y - MULTIPLIER_Y), "1");
+    p->drawText(QPointF(MID_X + 1, MID_Y + MULTIPLIER_Y), "-1");
+
+    p->drawLine(MID_X - MULTIPLIER_X, MID_Y - 3, MID_X - MULTIPLIER_X, MID_Y + 3);
+    p->drawLine(MID_X + MULTIPLIER_X, MID_Y - 3, MID_X + MULTIPLIER_X, MID_Y + 3);
+    p->drawText(QPointF(MID_X + MULTIPLIER_X, MID_Y + 1), "1");
+    p->drawText(QPointF(MID_X - MULTIPLIER_X, MID_Y + 1), "-1");
+
     QPainterPath Path(QPointF(MULTIPLIER_X * (start + 0.1), MID_Y));
     double yCoord[400];
     int i = 0;
