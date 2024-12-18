@@ -1,7 +1,7 @@
 #include "canvas.h"
 
 TCanvas::TCanvas(QWidget *parent)
-    : QWidget(parent), s(7)
+    : QWidget(parent)
 {
     setWindowTitle("Практика №8");
     setFixedSize(800, 500);
@@ -39,26 +39,28 @@ void TCanvas::paintEvent(QPaintEvent*)
     p.begin(this);
     if (sin_rb->isChecked())
     {
+        TFsin<double> sin_func(15);
         if (low_arg_input->text() == "" && high_arg_input->text() == "")
-            s.draw_sin(&p, double_NULL, double_NULL);
+            sin_func.draw(&p, double_NULL, double_NULL);
         else if (low_arg_input->text() == "")
-            s.draw_sin(&p, double_NULL, high_arg_input->text().toDouble());
+            sin_func.draw(&p, double_NULL, high_arg_input->text().toDouble());
         else if (high_arg_input->text() == "")
-            s.draw_sin(&p, low_arg_input->text().toDouble(), double_NULL);
+            sin_func.draw(&p, low_arg_input->text().toDouble(), double_NULL);
         else
-            s.draw_sin(&p, low_arg_input->text().toDouble(), high_arg_input->text().toDouble());
+            sin_func.draw(&p, low_arg_input->text().toDouble(), high_arg_input->text().toDouble());
     }
 
     if (integral_sin_rb->isChecked()) 
     {
+        TFSi<double> si_func(30);
         if (low_arg_input->text() == "" && high_arg_input->text() == "")
-            s.draw_integral_sin(&p, double_NULL, double_NULL);
+            si_func.draw(&p, double_NULL, double_NULL);
         else if (low_arg_input->text() == "")
-            s.draw_integral_sin(&p, double_NULL, high_arg_input->text().toDouble());
+            si_func.draw(&p, double_NULL, high_arg_input->text().toDouble());
         else if (high_arg_input->text() == "")
-            s.draw_integral_sin(&p, low_arg_input->text().toDouble(), double_NULL);
+            si_func.draw(&p, low_arg_input->text().toDouble(), double_NULL);
         else
-            s.draw_integral_sin(&p, low_arg_input->text().toDouble(), high_arg_input->text().toDouble());
+            si_func.draw(&p, low_arg_input->text().toDouble(), high_arg_input->text().toDouble());
     }
     p.end();
 }

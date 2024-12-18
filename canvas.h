@@ -6,7 +6,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QRadioButton>
-#include "sample.h"
+#include "fsi.h"
+#include "fsin.h"
 
 class TCanvas : public QWidget
 {
@@ -18,8 +19,6 @@ class TCanvas : public QWidget
     QLabel* func;
     QRadioButton* sin_rb, *integral_sin_rb;
     QPushButton* submit;
-
-    TSample s;
 
 public:
     TCanvas(QWidget *parent = nullptr);
